@@ -1,3 +1,9 @@
+# Fork Specifics
+
+This fork should address some extensions to the wonderfull stripe shop,
+like a responsive design, mobile Chrome support and support for other
+payment methods.
+
 # Shop
 
 ![Shop](https://raw.github.com/stripe/shop/master/examples/screenshot.png)
