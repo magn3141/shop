@@ -4,7 +4,7 @@ $(function() {
 
   // possible a random showcase image to use
   var imageChoices = [
-    { url: 'llamas.jpg', left: '33%', right: '33%' },
+    { url: 'llamas.jpg', left: '28%', right: '5%' },
   ];
 
   var userSelected = false;
@@ -36,8 +36,14 @@ $(function() {
    */
   function setShowcaseImage(image) {
     $('.showcase').css('background-image', 'url("' + image.url + '")');
-    $('.item.left').css('left', image.left);
-    $('.item.right').css('right', image.right);
+    // only set exact item position if this is not a small screen
+    // items do not have a padding on a small screen
+    if ($('.item.left').css('padding-left') != "0px") {
+        $('.item.left').css('padding-left', image.left);
+        $('.item.left').css('width', 50-parseInt(image.left) + '%');
+        $('.item.right').css('padding-right', image.right);
+        $('.item.right').css('width', 50-parseInt(image.right) + '%');
+    }
   }
 
   // show loading indicator initially
