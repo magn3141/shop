@@ -14,6 +14,11 @@
     this.id = 0;
     this.items = [];
     this.load();
+
+    // Empty Bag if an order was successfully from external
+      if (window.location.hash == '#success') {
+          this.empty();
+      }
   }
 
   /* Adds the given item object to the Bag. Sets an id tag on the item.

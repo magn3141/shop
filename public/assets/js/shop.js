@@ -5,6 +5,8 @@ $(function() {
   var PAYPAL_ENDPOINT = 'https://www.paypal.com/cgi-bin/webscr';
   //var PAYPAL_ENDPOINT = 'https://www.sandbox.paypal.com/cgi-bin/webscr';
   var PAYPAL_EMAIL = 'singlepageshop@example.com';
+  var PAYPAL_RETURN_URL = 'http://singlepageshop.parseapp.com/#success';
+  var PAYPAL_RETURN_NAME = 'Single Page Shop';
 
   var $window = $(window);
   var $emptyMessage = $('.dropdown .empty');
@@ -218,10 +220,14 @@ $(function() {
       form.attr('action', PAYPAL_ENDPOINT);
       form.attr('method', 'post');
 
+      // for possible options see:
+      // https://cms.paypal.com/uk/cgi-bin/?cmd=_render-content&content_ID=developer/e_howto_html_Appx_websitestandard_htmlvariables
       form.append($("<input>").attr("type","hidden").attr("name","cmd").val("_xclick"));
       form.append($("<input>").attr("type","hidden").attr("name","business").val(PAYPAL_EMAIL));
       form.append($("<input>").attr("type","hidden").attr("name","lc").val("DE"));
       form.append($("<input>").attr("type","hidden").attr("name","currency_code").val("EUR"));
+      form.append($("<input>").attr("type","hidden").attr("name","return").val(PAYPAL_RETURN_URL));
+      form.append($("<input>").attr("type","hidden").attr("name","cbt").val(PAYPAL_RETURN_NAME));
 
       form.append($("<input>").attr("type","hidden").attr("name","item_name").val(name));
       form.append($("<input>").attr("type","hidden").attr("name","quantity").val(1));
