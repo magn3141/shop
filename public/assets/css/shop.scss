@@ -1734,6 +1734,20 @@ strong.buttom.medium.rounded span { @include border-radius(15px); }
         form {
           padding: 12px 16px;
 
+          #payment-methods img {
+            margin-left: 3px;
+          }
+
+          #payment-methods li * {
+            vertical-align: middle;
+            margin-right: 5px;
+          }
+
+          #payment-methods li {
+            padding: 6px;
+            margin-bottom: 1px;
+          }
+
           .stripe-button-el {
             width: 100%;
           }

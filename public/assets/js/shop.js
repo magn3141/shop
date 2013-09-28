@@ -171,26 +171,56 @@ $(function() {
   window.addEventListener('touchmove', hideModalTouchHandler);
 
   var $order = $('#order');
-  var $stripeButton = $('.stripe-button-el');
+  var $purchaseButton = $('.stripe-button-el');
   var $errorMessage = $('.error-message');
   var $form = $('form');
 
-  $stripeButton.click(function(event) {
+  $purchaseButton.click(function(event) {
     event.preventDefault();
 
-    StripeCheckout.open({
-      key: stripeKey,
-      name: 'Shop',
-      description: 'Complete your order',
-      currency: 'usd',
-      image: '/assets/images/marketplace.png',
-      shippingAddress: true,
-      label: 'Purchase',
-      token: submitForm,
-      amount: getTotalPrice(bag.getItems()) * 100,
-      applicationID: 'ShopV1'
-    });
+    var name = "Single Page Shop Purchase";
+    var amount = getTotalPrice(bag.getItems());
+
+    // chose the payment method
+    if ($('#direct-payment').prop("checked")) {
+        startStripePayment(name, amount);
+    } else {
+        startPaypalPayment(name, amount);
+    }
   });
+
+  function startStripePayment(name, amount) {
+      StripeCheckout.open({
+          key: stripeKey,
+          name: 'Shop',
+          description: 'Complete your order',
+          currency: 'usd',
+          image: '/assets/images/marketplace.png',
+          shippingAddress: true,
+          label: name,
+          token: submitForm,
+          amount: amount * 100,
+          applicationID: 'ShopV1'
+      });
+  }
+
+  function startPaypalPayment(name, amount) {
+      var form = $("<form></form>");
+      form.attr('style', 'display:none;');
+      form.attr('action', 'https://www.paypal.com/cgi-bin/webscr');
+      form.attr('method', 'post');
+
+      form.append($("<input>").attr("type","hidden").attr("name","cmd").val("_xclick"));
+      form.append($("<input>").attr("type","hidden").attr("name","business").val("matti@supermatti.de"));
+      form.append($("<input>").attr("type","hidden").attr("name","lc").val("DE"));
+      form.append($("<input>").attr("type","hidden").attr("name","currency_code").val("EUR"));
+
+      form.append($("<input>").attr("type","hidden").attr("name","item_name").val(name));
+      form.append($("<input>").attr("type","hidden").attr("name","quantity").val(1));
+      form.append($("<input>").attr("type","hidden").attr("name","amount").val(amount));
+
+      form.submit();
+  }
 
   /* Submits the t-shirt form using AJAX.
    *
