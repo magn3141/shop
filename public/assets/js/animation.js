@@ -1,10 +1,9 @@
 $(function() {
-  var SHOWCASE_IMAGE_PREFIX = '/assets/images/showcase/';
   var backgroundImage = new Image();
 
   // possible a random showcase image to use
   var imageChoices = [
-    { url: 'llamas.jpg', left: '28%', right: '5%' },
+    { name: 'llamas', left: '28%', right: '5%' },
   ];
 
   var userSelected = false;
@@ -12,15 +11,10 @@ $(function() {
 
   // if user explicitly specified a showcase image in the hash, use it
   _.each(imageChoices, function(imageChoice) {
-    if (imageChoice.url.substring(0, imageChoice.url.length - 4) ===
-        window.location.hash.substring(1)) {
+    if (imageChoice.name === window.location.hash.substring(1)) {
       image = imageChoice;
       userSelected = true;
     }
-  });
-
-  _.each(imageChoices, function(image) {
-    image.url = SHOWCASE_IMAGE_PREFIX + image.url;
   });
 
   // otherwise, use random showcase image
@@ -35,7 +29,7 @@ $(function() {
    * image -- the image to set
    */
   function setShowcaseImage(image) {
-    $('.showcase').css('background-image', 'url("' + image.url + '")');
+    $('.showcase').addClass(image.name);
     // only set exact item position if this is not a small screen
     // items do not have a padding on a small screen
     if ($('.item.left').css('padding-left') != "0px") {
@@ -99,13 +93,12 @@ $(function() {
   });
 
   setShowcaseImage(image);
-  backgroundImage.src = image.url;
+  backgroundImage.src = $('.showcase').css('background-image').replace('url(','').replace(')','');
 
   // easter egg: when 'llamas' is typed, switch to an easter egg
   // image (not supplied).
   var SECRET_STRING = 'llamas';
-  var llamas = { url: SHOWCASE_IMAGE_PREFIX + 'egg.jpg', left: '33%',
-    right: '33%' };
+  var llamas = { name: 'egg', left: '33%', right: '33%' };
   var stringTyped = '';
 
   $(window).bind('keyup', function(event) {
