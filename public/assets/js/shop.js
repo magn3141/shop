@@ -2,6 +2,10 @@ $(function() {
   var CENTS_IN_DOLLAR = 100;
   var FADE_TIME_MS = 250;
 
+  var PAYPAL_ENDPOINT = 'https://www.paypal.com/cgi-bin/webscr';
+  //var PAYPAL_ENDPOINT = 'https://www.sandbox.paypal.com/cgi-bin/webscr';
+  var PAYPAL_EMAIL = 'singlepageshop@example.com';
+
   var $window = $(window);
   var $emptyMessage = $('.dropdown .empty');
   var $itemContainer = $('.item-container');
@@ -211,11 +215,11 @@ $(function() {
   function startPaypalPayment(name, amount) {
       var form = $("<form></form>");
       form.attr('style', 'display:none;');
-      form.attr('action', 'https://www.paypal.com/cgi-bin/webscr');
+      form.attr('action', PAYPAL_ENDPOINT);
       form.attr('method', 'post');
 
       form.append($("<input>").attr("type","hidden").attr("name","cmd").val("_xclick"));
-      form.append($("<input>").attr("type","hidden").attr("name","business").val("matti@supermatti.de"));
+      form.append($("<input>").attr("type","hidden").attr("name","business").val(PAYPAL_EMAIL));
       form.append($("<input>").attr("type","hidden").attr("name","lc").val("DE"));
       form.append($("<input>").attr("type","hidden").attr("name","currency_code").val("EUR"));
 
