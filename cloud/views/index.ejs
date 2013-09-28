@@ -81,12 +81,18 @@
 
                     <li id="credit-cards">
                         <input checked="checked" class="payment-method" id="direct-payment" name="gateway" type="radio" value="1310052">
-                        <label for="direct-payment"><img alt="Visa" class="credit-card" id="credit-card-visa" src="https://cdn.shopify.com/s/images/admin/icons/payment/visa.png" title="The credit card type is automatically detected when you enter your card number"><img alt="Master" class="credit-card" id="credit-card-master" src="https://cdn.shopify.com/s/images/admin/icons/payment/master.png" title="The credit card type is automatically detected when you enter your card number"><img alt="American_express" class="credit-card" id="credit-card-american_express" src="https://cdn.shopify.com/s/images/admin/icons/payment/american_express.png" title="The credit card type is automatically detected when you enter your card number"></label>
+                        <label for="direct-payment">
+                            <img alt="Visa" class="credit-card" id="credit-card-visa" src="https://checkout.stripe.com/v3/images/cards/visa.png" title="Visa">
+                            <img alt="MasterCard" class="credit-card" id="credit-card-master" src="https://checkout.stripe.com/v3/images/cards/mastercard.png" title="Mastercard">
+                            <img alt="American Express" class="credit-card" id="credit-card-american_express" src="https://checkout.stripe.com/v3/images/cards/amex.png" title="American Express">
+                        </label>
                     </li>
 
                     <li id="paypal-payments">
                         <input class="payment-method" id="paypal_express" name="gateway" type="radio" value="paypal_express">
-                        <label for="paypal_express"><img src="https://www.paypal.com/en_US/i/logo/PayPal_mark_37x23.gif" alt="PayPal Express Logo"></label>
+                        <label for="paypal_express">
+                            <img src="/assets/images/icon_paypal.png" alt="PayPal Express" title="PayPal Express">
+                        </label>
                     </li>
 
                 </ul>
