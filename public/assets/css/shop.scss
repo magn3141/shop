@@ -1747,6 +1747,35 @@ strong.buttom.medium.rounded span { @include border-radius(15px); }
             margin-bottom: 1px;
           }
 
+          #credit-card-visa, #credit-card-master, #credit-card-amex, #paypal {
+            background: url(/assets/images/payment-methods.png) no-repeat;
+            display: inline-block;
+          }
+
+          #credit-card-visa {
+            background-position: -168px 0;
+            width: 51px;
+            height: 32px;
+          }
+
+          #credit-card-master {
+            background-position: -56px 0;
+            width: 51px;
+            height: 32px;
+          }
+
+          #credit-card-amex {
+            background-position: -112px 0;
+            width: 51px;
+            height: 32px;
+          }
+
+          #paypal {
+            background-position: 0 0;
+            width: 51px;
+            height: 32px;
+          }
+
           .stripe-button-el {
             width: 100%;
             margin-top: 8px;

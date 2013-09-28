@@ -80,18 +80,18 @@
                 <ul id="payment-methods">
 
                     <li id="credit-cards">
-                        <input checked="checked" class="payment-method" id="direct-payment" name="gateway" type="radio" value="1310052">
+                        <input checked="checked" class="payment-method" id="direct-payment" name="gateway" type="radio">
                         <label for="direct-payment">
-                            <img alt="Visa" class="credit-card" id="credit-card-visa" src="https://checkout.stripe.com/v3/images/cards/visa.png" title="Visa">
-                            <img alt="MasterCard" class="credit-card" id="credit-card-master" src="https://checkout.stripe.com/v3/images/cards/mastercard.png" title="Mastercard">
-                            <img alt="American Express" class="credit-card" id="credit-card-american_express" src="https://checkout.stripe.com/v3/images/cards/amex.png" title="American Express">
+                            <span class="credit-card" id="credit-card-visa" title="Visa"></span>
+                            <span class="credit-card" id="credit-card-master" title="Mastercard"></span>
+                            <span class="credit-card" id="credit-card-amex" title="American Express"></span>
                         </label>
                     </li>
 
                     <li id="paypal-payments">
-                        <input class="payment-method" id="paypal_express" name="gateway" type="radio" value="paypal_express">
-                        <label for="paypal_express">
-                            <img src="/assets/images/icon_paypal.png" alt="PayPal Express" title="PayPal Express">
+                        <input class="payment-method" id="paypal-express" name="gateway" type="radio">
+                        <label for="paypal-express">
+                            <span id="paypal" title="PayPal Express"></span>
                         </label>
                     </li>
 
@@ -164,7 +164,6 @@
   </script>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-  <script src="https://checkout.stripe.com/v3/checkout.js"></script>
 
   <script>var stripeKey = '<%= config.stripe_publishable_key %>';</script>
   <script src="/assets/js/shop.min.js?1377809478"></script>

@@ -190,17 +190,21 @@ $(function() {
   });
 
   function startStripePayment(name, amount) {
-      StripeCheckout.open({
-          key: stripeKey,
-          name: 'Shop',
-          description: 'Complete your order',
-          currency: 'usd',
-          image: '/assets/images/marketplace.png',
-          shippingAddress: true,
-          label: name,
-          token: submitForm,
-          amount: amount * 100,
-          applicationID: 'ShopV1'
+      var url = "https://checkout.stripe.com/v3/checkout.js";
+      console.log(stripeKey);
+      $.getScript( url, function() {
+          StripeCheckout.open({
+              key: stripeKey,
+              name: 'Shop',
+              description: 'Complete your order',
+              currency: 'usd',
+              image: '/assets/images/marketplace.png',
+              shippingAddress: true,
+              label: name,
+              token: submitForm,
+              amount: amount * 100,
+              applicationID: 'ShopV1'
+          });
       });
   }
 
